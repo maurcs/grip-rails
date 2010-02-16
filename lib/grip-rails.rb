@@ -1,0 +1,8 @@
+require 'rubygems'
+require 'mongo_mapper'
+require 'grip'
+require 'mongo/gridfs'
+require 'mime/types'
+require 'tempfile'
+require 'grip/url_helper'
+require 'grip/rails/image'
