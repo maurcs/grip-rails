@@ -22,7 +22,7 @@ describe "Doc" do
 		end
 		
 		it "should have a url for variant sizes" do
-			@doc.image.url(:thumb).should == "/images/grid/resize_50_50_#{@doc.image.grid_key}"
+			@doc.image.url(:thumb).should == "/images/grid/#{@doc.image.grid_key}".gsub(@doc.image.file_name,"resize_50x50_#{@doc.image.file_name}")
 		end
 		
   end

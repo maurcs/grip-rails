@@ -18,6 +18,7 @@ Spec::Runner.configure do |config|
     MongoMapper.database.collections.each do |coll|
       coll.remove
     end
+		FileUtils.rm_rf(Rails.root.to_s + "/public/images/grid")
 	end
 end
 

@@ -2,10 +2,6 @@
 require(Rails.root + "/config/environment") unless defined?(Rails)
 require(Rails.root + "/config/initializers/database") unless defined?(Rails)
 
-#require 'mongo/gridfs'
-#require "image_science"
-#require 'fileutils'
-
 class GridFile
   
   def self.test_for_resize path
@@ -16,7 +12,8 @@ class GridFile
     include Mongo
     include GridFS
     request = Rack::Request.new(env)
-    if request.path_info =~ /^\/images\/grid\/(.+)$/ 
+    if request.path_info =~ /^\/images\/grid\/(.+)$/
+			Rails.logger.info "\n====\n#{$1}"
       matches = GridFile.test_for_resize request.path_info
       unless matches      
         if GridFS::GridStore.exist?(MongoMapper.database,$1)

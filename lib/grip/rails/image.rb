@@ -1,3 +1,5 @@
+require 'rmagick'
+
 module Grip
 	module Rails
 		class Image
@@ -41,12 +43,17 @@ module Grip
 		  end
   
 		  def resize width,height
-		    ImageScience.with_image_from_memory(file_data.read) do |img_file|
-		      img_file.resize(width.to_i,height.to_i) do |f|
-		        FileUtils.mkdir_p full_dir_path
-		        f.save(dest_file_path)
-		      end
-		    end
+				images = Magick::Image.from_blob(file_data.read)
+				new_image = images.first.adaptive_resize(width, height)
+				FileUtils.mkdir_p full_dir_path
+				new_image.write(dest_file_path)
+			
+		    # ImageScience.with_image_from_memory(file_data.read) do |img_file|
+		    #   img_file.resize(width.to_i,height.to_i) do |f|
+		    #     FileUtils.mkdir_p full_dir_path
+		    #     f.save(dest_file_path)
+		    #   end
+		    # end
 		    File.open(dest_file_path,'r')
 		  end
   

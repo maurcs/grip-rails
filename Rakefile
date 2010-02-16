@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "grip-rails"
-    gem.summary = %Q{A gem to help with Rails implimentation of Grip -- a MongoMapper GridFS Attachment gem}
+    gem.summary = %Q{A gem to help with Rails implementation of Grip -- a MongoMapper GridFS Attachment gem}
     gem.description = %Q{}
     gem.email = "conradmr@gmail.com"
     gem.homepage = "http://github.com/meanmarcus/grip-rails"
@@ -13,6 +13,7 @@ begin
     gem.add_development_dependency "rspec", ">= 1.2.9"
  
 		gem.add_dependency('grip')
+		gem.add_dependency('rmagick')
 		
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

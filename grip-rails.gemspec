@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{grip-rails}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marcus Rosentrater"]
@@ -23,16 +23,75 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "lib/grip-rails.rb"
+     "app/metal/grid_file.rb",
+     "grip-rails.gemspec",
+     "lib/grip-rails.rb",
+     "lib/grip/rails/image.rb",
+     "lib/grip/url_helper.rb",
+     "spec/assets/metal_fans.jpg",
+     "spec/assets/sample.pdf",
+     "spec/grid-rails_spec.rb",
+     "spec/grid_file_spec.rb",
+     "spec/models.rb",
+     "spec/rails_root/README",
+     "spec/rails_root/Rakefile",
+     "spec/rails_root/app/controllers/application_controller.rb",
+     "spec/rails_root/app/helpers/application_helper.rb",
+     "spec/rails_root/config/boot.rb",
+     "spec/rails_root/config/database.yml",
+     "spec/rails_root/config/environment.rb",
+     "spec/rails_root/config/environments/development.rb",
+     "spec/rails_root/config/environments/production.rb",
+     "spec/rails_root/config/environments/test.rb",
+     "spec/rails_root/config/initializers/backtrace_silencers.rb",
+     "spec/rails_root/config/initializers/inflections.rb",
+     "spec/rails_root/config/initializers/mime_types.rb",
+     "spec/rails_root/config/initializers/new_rails_defaults.rb",
+     "spec/rails_root/config/initializers/session_store.rb",
+     "spec/rails_root/config/locales/en.yml",
+     "spec/rails_root/config/routes.rb",
+     "spec/rails_root/db/seeds.rb",
+     "spec/rails_root/doc/README_FOR_APP",
+     "spec/rails_root/log/development.log",
+     "spec/rails_root/log/production.log",
+     "spec/rails_root/log/server.log",
+     "spec/rails_root/log/test.log",
+     "spec/rails_root/public/404.html",
+     "spec/rails_root/public/422.html",
+     "spec/rails_root/public/500.html",
+     "spec/rails_root/public/favicon.ico",
+     "spec/rails_root/public/images/rails.png",
+     "spec/rails_root/public/index.html",
+     "spec/rails_root/public/javascripts/application.js",
+     "spec/rails_root/public/javascripts/controls.js",
+     "spec/rails_root/public/javascripts/dragdrop.js",
+     "spec/rails_root/public/javascripts/effects.js",
+     "spec/rails_root/public/javascripts/prototype.js",
+     "spec/rails_root/public/robots.txt",
+     "spec/rails_root/script/about",
+     "spec/rails_root/script/console",
+     "spec/rails_root/script/dbconsole",
+     "spec/rails_root/script/destroy",
+     "spec/rails_root/script/generate",
+     "spec/rails_root/script/performance/benchmarker",
+     "spec/rails_root/script/performance/profiler",
+     "spec/rails_root/script/plugin",
+     "spec/rails_root/script/runner",
+     "spec/rails_root/script/server",
+     "spec/rails_root/test/performance/browsing_test.rb",
+     "spec/rails_root/test/test_helper.rb",
+     "spec/spec.opts",
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/meanmarcus/grip-rails}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{A gem to help with Rails implimentation of Grip -- a MongoMapper GridFS Attachment gem}
+  s.summary = %q{A gem to help with Rails implementation of Grip -- a MongoMapper GridFS Attachment gem}
   s.test_files = [
     "spec/grid-rails_spec.rb",
      "spec/grid_file_spec.rb",
+     "spec/image_spec.rb",
      "spec/models.rb",
      "spec/rails_root/app/controllers/application_controller.rb",
      "spec/rails_root/app/helpers/application_helper.rb",
@@ -60,13 +119,16 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_runtime_dependency(%q<grip>, [">= 0"])
+      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<grip>, [">= 0"])
+      s.add_dependency(%q<rmagick>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
     s.add_dependency(%q<grip>, [">= 0"])
+    s.add_dependency(%q<rmagick>, [">= 0"])
   end
 end
 
