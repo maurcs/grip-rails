@@ -44,7 +44,7 @@ module Grip
   
 		  def resize width,height
 				images = Magick::Image.from_blob(file_data.read)
-				new_image = images.first.adaptive_resize(width, height)
+				new_image = images.first.adaptive_resize(width.to_i, height.to_i)
 				FileUtils.mkdir_p full_dir_path
 				new_image.write(dest_file_path)
 			
