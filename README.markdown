@@ -18,13 +18,13 @@ To help with these dynamic url, there is a `#url` method placed on Grip::Attachm
 
 Set up a `grid_attachment`
 
-`
-  class Doc
+<code>
+  `class Doc
     include MongoMapper::Document
     include Grip::HasAttachment
     has_grid_attachment :image, :variants => {:thumb => {:width=>50,:height=>50}}
-  end
-`
+  end`
+</code>
 
 Then you can call `#url`
 
