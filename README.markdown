@@ -16,20 +16,26 @@ URL Helpers for Grip::Attachment
 
 To help with these dynamic url, there is a `#url` method placed on Grip::Attachment. [(See grip documentation)](http://github.com/twoism/grip). 
 
-Set up a `grid_attachment`:
+Set up a `grid_attachment`
 
+`
   class Doc
     include MongoMapper::Document
     include Grip::HasAttachment
     has_grid_attachment :image, :variants => {:thumb => {:width=>50,:height=>50}}
   end
+`
 
-Then you can call `#url`:
+Then you can call `#url`
 
+`
   puts @doc.image.url 
   => /images/grip/doc/12345678910/image/file_name.jpg
+`
 
 And when a variant is passed in:
 
+`
   puts @doc.image.url(:thumb) 
   => /images/grip/doc/12345678910/image/resize_50X50_file_name.jpg
+`
