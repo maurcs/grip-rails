@@ -18,18 +18,18 @@ To help with these dynamic url, there is a `#url` method placed on Grip::Attachm
 
 Set up a `grid_attachment`:
 
-  class Doc
-    include MongoMapper::Document
-    include Grip::HasAttachment
-    has_grid_attachment :image, :variants => {:thumb => {:width=>50,:height=>50}}
-  end
+    class Doc
+      include MongoMapper::Document
+      include Grip::HasAttachment
+      has_grid_attachment :image, :variants => {:thumb => {:width=>50,:height=>50}}
+    end
 
 Then you can call `#url`:
 
-  puts @doc.image.url 
-  => /images/grip/doc/12345678910/image/file_name.jpg
+    puts @doc.image.url 
+    => /images/grip/doc/12345678910/image/file_name.jpg
 
 And when a variant is passed in:
 
-  puts @doc.image.url(:thumb) 
-  => /images/grip/doc/12345678910/image/resize_50X50_file_name.jpg
+    puts @doc.image.url(:thumb) 
+    => /images/grip/doc/12345678910/image/resize_50X50_file_name.jpg
