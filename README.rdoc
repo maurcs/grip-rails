@@ -1,17 +1,42 @@
-= grip-rails
+grip-rails Helps Use `Grip` inside Rails
+===
 
-Description goes here.
+[Grip](http://github.com/twoism/grip) is a MongoMapper GridFS Attachment gem, and is a dependency for grip-rails.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+GridFile: A Rails Metal Image Server
+---
 
-== Copyright
+`GridFile` adds a route for `/images/grid/[file_name]` this route will fetch images attached to a `MongoMapper::Document` with `Grip`.
 
-Copyright (c) 2010 Marcus Rosentrater. See LICENSE for details.
+
+Alternately, this route checks for `/images/grid/resize_[width]x[height]_[file_name]` and will serve up, and cache, an image at the requested file dimensions.
+
+URL Helpers for Grip::Attachment
+---
+
+To help with these dynamic url, there is a `#url` method placed on Grip::Attachment. [(See grip documentation)](http://github.com/twoism/grip). 
+
+Set up a `grid_attachment`:
+
+<code>
+  `class Doc
+    include MongoMapper::Document
+    include Grip::HasAttachment
+    has_grid_attachment :image, :variants => {:thumb => {:width=>50,:height=>50}}
+  end`
+</code>
+
+Then you can call `#url`
+
+<code>
+  `puts @doc.image.url
+  => /images/grip/doc/12345678910/image/file_name.jpg`
+</code>
+
+And when a variant is passed in.
+
+<code>
+  `puts @doc.image.url(:thumb)
+  => /images/grip/doc/12345678910/image/resize_50X50_file_name.jpg`
+</code>
+</code>

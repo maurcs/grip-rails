@@ -9,7 +9,7 @@ begin
     gem.description = %Q{}
     gem.email = "conradmr@gmail.com"
     gem.homepage = "http://github.com/meanmarcus/grip-rails"
-    gem.authors = ["Marcus Rosentrater"]
+    gem.authors = ["meanmarcus"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
  
 		gem.add_dependency('grip')
